@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'welcome index' do
   before :each do
-    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com')
-    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com')
+    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com', password: 'password123', password_confirmation: 'password123')
+    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com', password: 'password123', password_confirmation: 'password123')
     visit '/'
   end
 
@@ -17,6 +17,12 @@ describe 'welcome index' do
     expect(page).to have_button('Create New User')
     click_button 'Create New User'
     expect(current_path).to eq(new_user_path)
+  end
+
+  it 'has a link for log in' do
+    expect(page).to have_button("Log In")
+    click_button "Log In"
+    expect(current_path).to eq("/login")
   end
 
   it 'has list of existing users' do

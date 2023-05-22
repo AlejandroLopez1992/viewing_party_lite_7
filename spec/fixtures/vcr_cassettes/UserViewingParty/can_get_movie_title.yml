@@ -25,34 +25,34 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Fri, 12 May 2023 20:40:44 GMT
+      - Mon, 22 May 2023 19:23:28 GMT
       Server:
       - openresty
       Cache-Control:
-      - public, max-age=25573
+      - public, max-age=22870
       X-Memc:
       - HIT
       X-Memc-Key:
       - 8d0207971eeea0f51591d02bcb121b9b
       X-Memc-Age:
-      - '18759'
+      - '11101'
       X-Memc-Expires:
-      - '3441'
+      - '14213'
       Etag:
-      - W/"87b601c2e213cadec3b14d25f4e7feaf"
+      - W/"f53ff8b613ae58bacfa4cac7ffa7f432"
       Vary:
       - Accept-Encoding
       - Origin
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 c73c454a7c881cf4337ab88377497bfc.cloudfront.net (CloudFront)
+      - 1.1 f111faa3f37b2169cefb225b0f246234.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - DFW57-P2
+      - DEN52-P2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - Bja9DBUU36V_ipS66iohNqMd-S_2lV2N_e5NiAvbPEMII0DLwbP5WA==
+      - 7on9Vhw6fX80bgpWzMJxFqyKR-9QgSG_k1G1v6OKlqGjmYSy1tNMqA==
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/747dgDfL5d8esobk7h4odaOFhUq.jpg","belongs_to_collection":null,"budget":7000000,"genres":[{"id":80,"name":"Crime"},{"id":18,"name":"Drama"},{"id":53,"name":"Thriller"}],"homepage":"","id":275,"imdb_id":"tt0116282","original_language":"en","original_title":"Fargo","overview":"Jerry,
@@ -63,10 +63,10 @@ http_interactions:
         Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely
         pregnant - investigator who''ll stop at nothing to get her man. And if you
         think her small-time investigative skills will give the crooks a run for their
-        ransom... you betcha!","popularity":22.36,"poster_path":"/rt7cpEr1uP6RTZykBFhBTcRaKvG.jpg","production_companies":[{"id":1382,"logo_path":"/sOg7LGESPH5vCTOIdbMhLuypoLL.png","name":"PolyGram
+        ransom... you betcha!","popularity":17.646,"poster_path":"/rt7cpEr1uP6RTZykBFhBTcRaKvG.jpg","production_companies":[{"id":1382,"logo_path":"/sOg7LGESPH5vCTOIdbMhLuypoLL.png","name":"PolyGram
         Filmed Entertainment","origin_country":"US"},{"id":10163,"logo_path":"/16KWBMmfPX0aJzDExDrPxSLj0Pg.png","name":"Working
         Title Films","origin_country":"GB"}],"production_countries":[{"iso_3166_1":"GB","name":"United
         Kingdom"},{"iso_3166_1":"US","name":"United States of America"}],"release_date":"1996-03-08","revenue":60611975,"runtime":98,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"A
-        lot can happen in the middle of nowhere.","title":"Fargo","video":false,"vote_average":7.869,"vote_count":7029}'
-  recorded_at: Fri, 12 May 2023 20:40:44 GMT
+        lot can happen in the middle of nowhere.","title":"Fargo","video":false,"vote_average":7.869,"vote_count":7048}'
+  recorded_at: Mon, 22 May 2023 19:23:28 GMT
 recorded_with: VCR 6.1.0

@@ -3,9 +3,9 @@ require 'rails_helper'
 
 describe 'new viewing party', :vcr do
   before :each do
-    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com')
-    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com')
-    @user3 = User.create!(name: 'Donald J Trump', email: 'Trumpinator420@hotmail.com')
+    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com', password: 'password123', password_confirmation: 'password123')
+    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com', password: 'password123', password_confirmation: 'password123')
+    @user3 = User.create!(name: 'Donald J Trump', email: 'Trumpinator420@hotmail.com', password: 'password123', password_confirmation: 'password123')
     @movie1 = SearchFacade.new({ id: "238" }).movies
 
     visit new_user_movie_viewing_party_path(@user1, @movie1.id)

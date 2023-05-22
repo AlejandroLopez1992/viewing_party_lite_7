@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'user result show page', :vcr do
   before :each do
-    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com')
-    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com')
+    @user1 = User.create!(name: 'JoJo', email: 'JoJo@hotmail.com', password: 'password123', password_confirmation: 'password123')
+    @user2 = User.create!(name: 'JaJa', email: 'JaJa@hotmail.com', password: 'password123', password_confirmation: 'password123')
   
     @movie1 = SearchFacade.new({ type: 'top_rated' }).movies.first
     @movie2 = SearchFacade.new({ type: 'top_rated' }).movies[10]
