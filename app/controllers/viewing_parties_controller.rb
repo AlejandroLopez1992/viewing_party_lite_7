@@ -1,8 +1,13 @@
 class ViewingPartiesController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
-    @movie = MovieService.movie_search(params[:movie_id])
-    @users = User.where.not(id: @user.id)
+    begin
+      @user = User.find(session[:user_id])
+      @movie = MovieService.movie_search(params[:movie_id])
+      @users = User.where.not(id: @user.id)
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "Error: must be logged in or registered to create a movie party."
+      redirect_to user_movie_path(params[:user_id], params[:movie_id])
+    end
   end
 
   def create

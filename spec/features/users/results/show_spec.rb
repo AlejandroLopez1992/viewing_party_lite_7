@@ -13,6 +13,12 @@ describe 'user result show page', :vcr do
   end
 
   it 'has button to create a viewing party' do
+    visit login_path
+
+    fill_in(:name, with: @user1.name)
+    fill_in(:password, with: @user1.password)
+    click_button("Log In")
+
     visit user_discover_index_path(@user1)
     click_on "Top Rated"
     click_on "The Godfather"
@@ -30,6 +36,12 @@ describe 'user result show page', :vcr do
 
   describe 'movie information' do
     before :each do
+      visit login_path
+
+      fill_in(:name, with: @user1.name)
+      fill_in(:password, with: @user1.password)
+      click_button("Log In")
+
       visit user_movie_path(@user1, @new_movie1.id)
     end
     it 'has movie title' do
@@ -77,5 +89,14 @@ describe 'user result show page', :vcr do
       expect(page).to have_content("futuretv Review:")
       expect(page).to have_content("drystyx Review:")
     end
+  end
+
+  it "if visitor tries to create viewing party without login or register error is shown and redirected to movies show" do
+    visit user_movie_path(@user1, @new_movie1.id)
+
+    click_button("Create a Viewing Party!")
+
+    expect(current_path).to eq(user_movie_path(@user1, @new_movie1.id))
+    expect(page).to have_content("Error: must be logged in or registered to create a movie party.")
   end
 end
