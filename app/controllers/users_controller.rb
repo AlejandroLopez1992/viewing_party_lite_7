@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    begin
+      @user = User.find(session[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "Error: must be logged in or registered to access dashboard"
+      redirect_to root_path
+    end
   end
 
   def login_form 

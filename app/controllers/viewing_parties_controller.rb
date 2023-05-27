@@ -16,7 +16,7 @@ class ViewingPartiesController < ApplicationController
         params[:selected_users].each do |users_id|
           UserViewingParty.new(user_id: users_id, viewing_party_id: viewing_party.id).save
         end
-        redirect_to user_path(@user)
+        redirect_to dashboard_path
       elsif params[:selected_users].nil?
         redirect_to new_user_movie_viewing_party_path(@user, @movie[:id])
         flash[:alert] = "Error: Must add users! Don't be a loner!"

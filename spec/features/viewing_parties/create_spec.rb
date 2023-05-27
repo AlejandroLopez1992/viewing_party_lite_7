@@ -8,6 +8,12 @@ describe 'new viewing party', :vcr do
     @user3 = User.create!(name: 'Donald J Trump', email: 'Trumpinator420@hotmail.com', password: 'password123', password_confirmation: 'password123')
     @movie1 = SearchFacade.new({ id: "238" }).movies
 
+    visit login_path
+
+    fill_in(:name, with: @user1.name)
+    fill_in(:password, with: @user1.password)
+    click_button("Log In")
+
     visit new_user_movie_viewing_party_path(@user1, @movie1.id)
   end
 
@@ -64,7 +70,7 @@ describe 'new viewing party', :vcr do
       end
       click_on "Create Party"
 
-      expect(current_path).to eq(user_path(@user1))
+      expect(current_path).to eq(dashboard_path)
     end
 
     it 'redirects to dashboard' do

@@ -52,4 +52,11 @@ describe 'welcome index' do
     expect(page).to_not have_link(@user1.email)
     expect(page).to_not have_link(@user2.email)
   end
+
+  it 'if visitor tries to visit dashboard without login or registering they receive error and stay on welcome page' do
+    visit dashboard_path
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Error: must be logged in or registered to access dashboard")
+  end
 end

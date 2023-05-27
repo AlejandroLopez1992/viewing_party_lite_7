@@ -25,7 +25,7 @@ describe 'create user' do
     expect(user).to_not have_attribute(:password)
     expect(user.password_digest).to_not eq('Janeiscool1')
     expect(user.name).to eq('Jane')
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(dashboard_path)
   end
 
   it "name missing missing passoword, or matching passwords are matching, redirect to /register" do
@@ -36,7 +36,7 @@ describe 'create user' do
 
     click_button 'Register'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
     expect(page).to have_content("Error: Name can't be blank")
 
     fill_in :name, with: 'Jane'
@@ -46,7 +46,7 @@ describe 'create user' do
 
     click_button 'Register'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
     expect(page).to have_content("Error: Password can't be blank, Password digest can't be blank")
 
     fill_in :name, with: 'Jane'
@@ -55,7 +55,7 @@ describe 'create user' do
     fill_in :password_confirmation, with: "Janeiscool1"
     click_button 'Register'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
     
     expect(page).to have_content("Error: Password confirmation doesn't match Password")
   end
@@ -68,7 +68,7 @@ describe 'create user' do
 
     click_button 'Register'
     expect(User.last.name).to eq('JaJa')
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
     within '#flash_message' do
       expect(page).to have_content('Error: Email has already been taken')
     end
@@ -82,7 +82,7 @@ describe 'create user' do
 
     click_button 'Register'
     expect(User.last.name).to eq('JaJa')
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
     within '#flash_message' do
       expect(page).to have_content('Error: Email has already been taken')
     end
