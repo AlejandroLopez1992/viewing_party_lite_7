@@ -1,12 +1,18 @@
-<%= button_to "Create New User", new_user_path, method: :get %>
-<%= button_to "Log In", "/login", method: :get %>
+<% if current_user %>
+  <%= button_to "Log Out", "/logout", method: :get %>
+<% else%>
+  <%= button_to "Create New User", new_user_path, method: :get %>
+  <%= button_to "Log In", "/login", method: :get %>
+<% end%>
 
-<h3>Users:</h3>
-<div id='users'>
-<% @users.each do |user| %>
-<li><%=link_to "#{user.name}", user_path(user) %></li>
+<% if current_user %>
+  <h3>Users:</h3>
+  <div id='users'>
+  <% @users.each do |user| %>
+  <li><%= user.email %></li>
+  <% end %>
+  </div>
 <% end %>
-</div>
 
 <p>
   The time is now: <%= Time.now %>

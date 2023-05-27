@@ -42,4 +42,32 @@ RSpec.describe "Logging In" do
   
     expect(page).to have_content("Sorry, your credentials are bad.")
   end
+
+  it 'once logged in, welcome page displays log out option only' do
+    user = User.create!(name: "meg", email:"meg@test.com", password: "test123", password_confirmation: "test123")
+    visit root_path
+
+    expect(page).to have_button("Log In")
+    expect(page).to have_button("Create New User")
+
+    click_button("Log In")
+    
+    fill_in :name, with: user.name
+    fill_in :password, with: user.password
+    click_on "Log In"
+  
+    visit root_path
+
+    expect(page).to_not have_button("Log In")
+    expect(page).to_not have_button("Create New User")
+    expect(page).to have_button("Log Out")
+
+    click_button("Log Out")
+
+    expect(current_path).to eq(root_path)
+
+    expect(page).to have_button("Log In")
+    expect(page).to have_button("Create New User")
+    expect(page).to_not have_button("Log Out")
+  end
 end

@@ -25,11 +25,18 @@ describe 'welcome index' do
     expect(current_path).to eq("/login")
   end
 
-  it 'has list of existing users' do
+  it 'has list of emails from existing users if user is logged in' do
+    click_button ("Log In")
+
+    fill_in :name, with: @user1.name
+    fill_in :password, with: @user1.password
+    click_on "Log In"
+  
+    visit root_path
     expect(page).to have_content('Users')
     within '#users' do
-      expect(page).to have_link(@user1.name)
-      expect(page).to have_link(@user2.name)
+      expect(page).to have_content(@user1.email)
+      expect(page).to have_content(@user2.email)
     end
   end
 
@@ -39,5 +46,10 @@ describe 'welcome index' do
       click_link 'Home'
       expect(current_path).to eq('/')
     end
+  end
+
+  it "if no user is logged in, no list of existing users appears" do
+    expect(page).to_not have_link(@user1.email)
+    expect(page).to_not have_link(@user2.email)
   end
 end

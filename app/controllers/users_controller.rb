@@ -6,15 +6,16 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save 
-      redirect_to user_path(user)
+      session[:user_id] = user.id
+      redirect_to dashboard_path
     else
-      redirect_to new_user_path
+      redirect_to register_path
       flash[:alert] = "Error: #{error_message(user.errors)}"
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def login_form 
@@ -22,15 +23,11 @@ class UsersController < ApplicationController
 
   def login_user
     user = User.find_by(name: user_params[:name])
-    begin 
-      if user.authenticate(user_params[:password])
+    if user && user.authenticate(user_params[:password])
+      session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.name}"
-      redirect_to user_path(user)
-      else
-        flash[:error] = "Sorry, your credentials are bad."
-        render :login_form
-      end
-    rescue NoMethodError
+      redirect_to dashboard_path
+    else
       flash[:error] = "Sorry, your credentials are bad."
       render :login_form
     end

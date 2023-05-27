@@ -60,7 +60,7 @@ describe 'user result show page', :vcr do
     it 'lists first 10 cast members' do
       visit user_movie_path(@user1, @new_movie1.id)
       within "#member_#{@new_movie1.cast.first[:cast_id]}" do
-        expect(page).to have_content("Marlon Brando as Vito Corleone")
+        expect(page).to have_content("Al Pacino as Michael Corleone")
       end
       expect(@new_movie1.cast.count).to eq(10)
     end
